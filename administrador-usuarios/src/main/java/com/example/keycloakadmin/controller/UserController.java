@@ -4,12 +4,10 @@ package com.example.keycloakadmin.controller;
 import com.example.keycloakadmin.model.User;
 import com.example.keycloakadmin.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -32,5 +30,13 @@ public String yes(){
     @GetMapping("/username/{userName}")
     public ResponseEntity<List<User>> findByUserName(@PathVariable String userName) {
         return ResponseEntity.ok(service.findByUserName(userName));
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<User> findUserById(@PathVariable String id){
+        return ResponseEntity.ok(service.findUserById(id));
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<User> deleteUserById(@PathVariable String id){
+        return ResponseEntity.ok(service.deleteUserById(id));
     }
 }

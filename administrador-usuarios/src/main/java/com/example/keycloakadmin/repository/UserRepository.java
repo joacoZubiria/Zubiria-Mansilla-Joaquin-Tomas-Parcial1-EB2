@@ -54,12 +54,23 @@ public class UserRepository implements IUserRepository{
     }
 
     @Override
-    public Optional<User> findById(String id) {
-        return Optional.empty();
+    public User findById(String id) {
+        UserRepresentation userRepresentation = keycloakClient
+                .realm(realm)
+                .users()
+                .get(id)
+                .toRepresentation();
+        return toUser(userRepresentation);
     }
 
     @Override
     public User deleteUserById(String id) {
-        return null;
+        UserRepresentation userRepresentation = keycloakClient
+                .realm(realm)
+                .users()
+                .get(id)
+                .toRepresentation();
+        keycloakClient.realm(realm).users().delete(id);
+        return toUser(userRepresentation);
     }
 }

@@ -35,6 +35,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
                 .requestMatchers(HttpMethod.GET, "/users/**").hasRole(ADMIN)
+                .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole(ADMIN)
                 .anyRequest().authenticated();
         http.oauth2ResourceServer()
                 .jwt()

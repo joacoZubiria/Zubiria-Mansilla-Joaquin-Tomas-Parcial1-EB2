@@ -5,6 +5,7 @@ import com.example.keycloakadmin.repository.IUserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -23,4 +24,6 @@ public class UserService {
         return repository.findByUserName(userName);
     }
 
+    public User findUserById(String id){return repository.findById(id);}
+    public User deleteUserById(String id){return repository.deleteUserById(id);}
 }
