@@ -1,0 +1,21 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: administrador-usuarios
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/el-aparato-zubiria
+jwt:
+  auth:
+    converter:
+      resource-id: administrador-usuarios
+dh:
+  keycloak:
+    serverUrl: http://localhost:8080
+    realm: el-aparato-zubiria
+    clientId: administrador-usuarios
+    clientSecret: QgkeKtscLoZD2QB4bBR3rBdetF7quY8e
